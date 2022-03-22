@@ -71,13 +71,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     user_name: "apikey",
-    password: "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",
+    password: Rails.application.secrets.api_key,
     domain: 'gene-rails-hello.herokuapp.com',
     address: 'smtp.sendgrid.net',
     port: 587, 
     authentication: :plain,
     enable_starttls_auto: true
   }
+  config.read_encrypted_secrets = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
