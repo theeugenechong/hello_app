@@ -68,16 +68,16 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   host = 'gene-rails-hello.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address => 'smtp.sendgrid.net',
-    :port => '587',
+    :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+    :password => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain => "gene-rails-hello.herokuapp.com",
+    :address => 'smtp.mailgun.org',
+    :port => 587,
     :authentication => :plain,
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'gene-rails-hello.herokuapp.com',
     :enable_starttls_auto => true
-  }
+    }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
