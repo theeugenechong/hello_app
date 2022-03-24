@@ -26,3 +26,6 @@
 /spring/*.pid
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+
+#Ignore uploaded test images
+/public/uploads
